@@ -1,4 +1,8 @@
 import random
+from google.distance_matrix import DistanceMatrix
+
+api_key = "AIzaSyAYeZZFs_LKiJ_pm-hsw5pD56XhxkFq2cY"
+distance_matrix = DistanceMatrix(api_key)
 
 """
     This is dummy object model simulating app/models/order.py
@@ -10,9 +14,10 @@ class Order(object):
         self.address = address
         self.dummyDistance = random.uniform(0, 8)
 
-    def getDistance(self, Order):
+    def getDistance(self, order):
         """
             Implement Google Maps API here
         """
-        return self.dummyDistance
+        distance = distance_matrix.distance(order.address, self.address)
+        return distance
 
