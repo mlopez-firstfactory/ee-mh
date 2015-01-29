@@ -8,7 +8,8 @@ class DistanceMatrix(object):
 
     def distance(self, origin, destination):
         result = self.query(origin, destination)
-        return self.extract(result, "distance", "value")
+        meters = self.extract(result, "distance", "value")
+        return self.meters_to_miles(meters)
 
     def duration(self, origin, destination):
         result = self.query(origin, destination)
@@ -34,3 +35,6 @@ class DistanceMatrix(object):
         # Placeholder method
         parsed_address = address
         return parsed_address
+
+    def meters_to_miles(self, meters):
+        return meters * 0.000621371
